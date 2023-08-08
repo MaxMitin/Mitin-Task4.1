@@ -1,17 +1,61 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.io.*;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        try
+        {
+            Scanner input = new Scanner(new File("numbers.txt"));
+        int n = input.nextInt();
+            double[] num = new double[n];
+            for (int i = 0; i < num.length; i++) {num[i] = input.nextDouble(); System.out.println(num[i]);}
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+            Arrays.sort(num);
+            double median;
+            if (num.length % 2 == 0)
+                median = ((double)num[num.length/2] + (double)num[num.length/2 - 1])/2;
+            else
+                median = (double) num[num.length/2];
+
+            System.out.println(" ");
+            System.out.println("Медианное значение вышеперечисленных чисел: " + median);
         }
+
+        catch (InputMismatchException e) {System.out.println("Ой!");}
+        catch (FileNotFoundException e) {System.out.println("Ой-ой-ой!");}
+
+        }
+
+
     }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
